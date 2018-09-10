@@ -5,6 +5,7 @@ import {
    Link,
 } from 'react-router-dom';
 import Topics from './Topics';
+import Home from './Home'
 
 //Be sure to npm install react-router-dom
 //react-router-dom includes three packages:
@@ -12,14 +13,16 @@ import Topics from './Topics';
 //react-router-dom - web
 //react-router-native - mobile
 
-
-function Home() {
+/*
+//move to own component
+function Home(props) {
    return (
       <h1>
-         Home.
+         Home. {props.name}
     </h1>
    )
 }
+*/
 
 class App extends Component {
    render() {
@@ -39,8 +42,12 @@ class App extends Component {
                {/* Route component renders a page if the current URL location matches the path prop specified in it. It also accepts component, render and children props. */}
                {/* All paths have /, so we need to include exact if we just want one item*/}
 
-               <Route exact path='/' component={Home} />
+               <Route exact path='/' render={()=>{
+                  return <Home name="Brenda" />
+               }} />
+
                <Route path='/topics' component={Topics} />
+
                {/* Check out Switch as well */}
                {/* As soon as Switch finds a match, it stops looking */}
             </div>
